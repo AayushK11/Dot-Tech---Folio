@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:folio/screens/login.dart';
+import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
-// import required -> login
+import 'package:page_transition/page_transition.dart';
 // impoort required -> bottom nav bar
 
 class SplashScreen extends StatefulWidget {
@@ -26,8 +29,39 @@ class _SplashScreenState extends State<SplashScreen> {
     final _email = await myStorage.getItem('Email');
     final _password = await myStorage.getItem('Password');
 
-    const baseURL = 'http://<link>/api';
+    const baseURL = 'http://0fbe-110-226-206-82.ngrok.io/api';
     final url = Uri.parse('$baseURL/login/');
+
+    Response response = await post(url, body: {
+      'email': _email.toString(),
+      'password': _password.toString(),
+    });
+
+    final responseJson = jsonDecode(response.body);
+    final responseMessage = responseJson['message'];
+
+    if (responseMessage == "Login Successful") {
+      await myStorage.setItem("FirstName", responseJson['firstname']);
+      await myStorage.setItem("LastName", responseJson['lastname']);
+      await myStorage.setItem("Email", _email);
+      await myStorage.setItem("Password", _password);
+      await myStorage.setItem("CurrentValue", responseJson['portfoliovalue']);
+      await myStorage.setItem("InvestedValue", responseJson['investedvalue']);
+      await myStorage.setItem("Portfolio", responseJson['portfolio']);
+      await myStorage.setItem("Change", responseJson['change']);
+      await myStorage.setItem("MediumTerm", responseJson['medium']);
+      await myStorage.setItem("LongTerm", responseJson['long']);
+      // Move to Bottom Navbar
+    } else {
+      Navigator.pushAndRemoveUntil(
+          context,
+          PageTransition(
+            duration: const Duration(milliseconds: 500),
+            type: PageTransitionType.rightToLeft,
+            child: const Login(),
+          ),
+          (route) => false);
+    }
   }
 
   @override

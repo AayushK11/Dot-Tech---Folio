@@ -1,2 +1,3 @@
 Color(0xFF212230) -> Dark Blue -> Background
 Color(0xff00c9ff) -> Light Blue -> Secondary
+Color(0xFFE43434) -> Red -> Error / Loss
