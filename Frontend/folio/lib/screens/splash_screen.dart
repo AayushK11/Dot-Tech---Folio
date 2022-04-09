@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:folio/screens/bottom_navigation.dart';
 import 'package:folio/screens/login.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
-// impoort required -> bottom nav bar
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -51,7 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
       await myStorage.setItem("Change", responseJson['change']);
       await myStorage.setItem("MediumTerm", responseJson['medium']);
       await myStorage.setItem("LongTerm", responseJson['long']);
-      // Move to Bottom Navbar
+      Navigator.pushAndRemoveUntil(
+          context,
+          PageTransition(
+            duration: const Duration(milliseconds: 500),
+            type: PageTransitionType.rightToLeft,
+            child: const BottomNavigation(),
+          ),
+          (route) => false);
     } else {
       Navigator.pushAndRemoveUntil(
           context,
@@ -67,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF212230),
+      backgroundColor: const Color(0xFF10111A),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

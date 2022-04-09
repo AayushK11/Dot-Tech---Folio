@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/bottom_navigation.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'dart:convert';
-// import 'package:page_transition/page_transition.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -50,7 +51,14 @@ class _LoginState extends State<Login> {
         await myStorage.setItem("Change", responseJson['change']);
         await myStorage.setItem("MediumTerm", responseJson['medium']);
         await myStorage.setItem("LongTerm", responseJson['long']);
-        // Move to Bottom Navbar
+        Navigator.pushAndRemoveUntil(
+            context,
+            PageTransition(
+              duration: const Duration(milliseconds: 500),
+              type: PageTransitionType.rightToLeft,
+              child: const BottomNavigation(),
+            ),
+            (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("Login Failed. Please Check Your Credentials."),
@@ -60,7 +68,7 @@ class _LoginState extends State<Login> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFF212230),
+      backgroundColor: const Color(0xFF10111A),
       body: SafeArea(
         child: Container(
           alignment: Alignment.topCenter,
