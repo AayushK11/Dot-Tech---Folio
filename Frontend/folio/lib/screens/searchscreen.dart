@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/stock_basic_info_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SearchStock extends StatefulWidget {
   const SearchStock({Key? key}) : super(key: key);
@@ -17,6 +19,37 @@ class _SearchStockState extends State<SearchStock> {
   @override
   void initState() {
     super.initState();
+  }
+
+  _login() async {
+    await myStorage.ready;
+
+    const baseURL = 'http://166a-110-226-206-82.ngrok.io/api';
+    final url = Uri.parse('$baseURL/login/');
+
+    Response response = await post(url, body: {
+      'email': myStorage.getItem('Email').toString(),
+      'password': myStorage.getItem('Password').toString(),
+    });
+
+    final responseJson = jsonDecode(response.body);
+    final responseMessage = responseJson['message'];
+
+    if (responseMessage == "Login Successful") {
+      await myStorage.setItem("FirstName", responseJson['firstname']);
+      await myStorage.setItem("LastName", responseJson['lastname']);
+      await myStorage.setItem("CurrentValue", responseJson['portfoliovalue']);
+      await myStorage.setItem("InvestedValue", responseJson['investedvalue']);
+      await myStorage.setItem("Portfolio", responseJson['portfolio']);
+      await myStorage.setItem("Change", responseJson['change']);
+      await myStorage.setItem("MediumTerm", responseJson['medium']);
+      await myStorage.setItem("LongTerm", responseJson['long']);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Login Failed. Please Check Your Credentials."),
+        backgroundColor: Color(0xFFE43434),
+      ));
+    }
   }
 
   _sendDetails() async {
@@ -42,7 +75,14 @@ class _SearchStockState extends State<SearchStock> {
       await myStorage.setItem("WeekPred", responseJson['week']);
       await myStorage.setItem("MonthPred", responseJson['month']);
       await myStorage.setItem("LastClose", responseJson['last']);
-      // Show Stock Info
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: const NewStockScreen(),
+        ),
+      ).then((value) => _login());
     } else if (responseMessage == "Stock Does Not Exist") {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Stock Not Found."),
