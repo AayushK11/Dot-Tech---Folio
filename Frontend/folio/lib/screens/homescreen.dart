@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:folio/screens/add_stock_screen.dart';
+import 'package:folio/screens/existing_stock_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -307,7 +308,14 @@ portfolioStock(context, name, price, icon) {
       final LocalStorage myStorage = LocalStorage('fintech');
       String _stockCode = name;
       myStorage.setItem("stockCode", _stockCode);
-      // Stock Screen
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: const StockScreen(),
+        ),
+      );
     },
     child: Container(
       margin: const EdgeInsets.fromLTRB(5, 0, 10, 0),
