@@ -79,20 +79,21 @@ class _LoginState extends State<Login> {
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(top: 150, left: 50),
                 child: Row(children: [
+                  const SizedBox(width: 40),
                   Image.asset(
                     'assets/images/favicon.png',
                     width: 120,
                   ),
                   const SizedBox(width: 10),
                   Container(
-                    margin: const EdgeInsets.only(left: 50),
+                    margin: const EdgeInsets.only(left: 0, top: 19),
                     child: const Text(
-                      'Folio',
+                      'folio',
                       style: TextStyle(
                         fontSize: 30,
                         fontFamily: "Avenir",
                         fontWeight: FontWeight.bold,
-                        color: Color(0xff00c9ff),
+                        color: Color(0xffFFD632),
                       ),
                     ),
                   ),
@@ -165,7 +166,7 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              const SizedBox(height: 230),
+              const SizedBox(height: 150),
               Container(
                 alignment: Alignment.bottomCenter,
                 margin: const EdgeInsets.only(bottom: 40, left: 35, right: 35),

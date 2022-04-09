@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/add_stock_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,7 +75,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: Alignment.center,
                         icon: Image.asset('assets/images/add_icon.png'),
                         onPressed: () {
-                          // Add Icon
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              duration: const Duration(milliseconds: 500),
+                              type: PageTransitionType.bottomToTop,
+                              child: const AddStock(),
+                            ),
+                          );
                         },
                       ),
                     ]),

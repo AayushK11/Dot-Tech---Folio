@@ -5,3 +5,4 @@ Color(0xFF10111A) -> Darker Blue -> Navbar
 Color(0xFFF3AF00) -> Yellow -> Neutral
 Color(0xff30B451) -> Green -> Positive
 Color(0xffF44336) -> Red -> Negative
+Color(0xffFFD632) -> Light Yellow -> Title

@@ -83,17 +83,17 @@ class _SplashScreenState extends State<SplashScreen> {
               alignment: Alignment.center,
               child: Image.asset(
                 'assets/images/favicon.png',
-                width: 175,
+                width: 220,
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 7),
             Container(
               child: (const Text(
-                'Folio',
+                'folio',
                 style: TextStyle(
-                    color: Color(0xff00c9ff),
+                    color: Color(0xffFFD632),
                     fontFamily: "Avenir",
-                    fontSize: 30,
+                    fontSize: 35,
                     fontWeight: FontWeight.w900),
               )),
             ),
