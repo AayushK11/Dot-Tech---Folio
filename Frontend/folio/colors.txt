@@ -1,0 +1,2 @@
+Color(0xFF212230) -> Dark Blue -> Background
+Color(0xff00c9ff) -> Light Blue -> Secondary
