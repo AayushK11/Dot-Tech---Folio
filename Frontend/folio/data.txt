@@ -8,3 +8,10 @@ Portfolio - Array of Stock Details
 Change - P/L%
 MediumTerm - Week Change Percent
 LongTerm - Month Change Percent
+StockCode - Searched Stock
+Company - Company Name
+Logo - Company Logo
+DayPred - Stock Day Prediction
+WeekPred - Stock Week Prediction
+MonthPred - Stock Month Prediction
+LastClose - Last Closing Price
