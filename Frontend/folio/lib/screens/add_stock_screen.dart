@@ -101,10 +101,10 @@ class _AddStockState extends State<AddStock> {
         title: const Text(
           'Add Stock',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.white,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              fontFamily: "avenir"),
         ),
       ),
       body: SafeArea(

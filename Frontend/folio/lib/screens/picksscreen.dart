@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/dividendstars.dart';
+import 'package:folio/screens/longtermtrades.dart';
+import 'package:folio/screens/mediumtermtrades.dart';
+import 'package:folio/screens/shorttermtrades.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class PicksScreen extends StatefulWidget {
   const PicksScreen({Key? key}) : super(key: key);
@@ -59,28 +64,32 @@ class _PicksScreenState extends State<PicksScreen> {
                       "Short Term Picks",
                       "assets/images/stopwatch_red.png",
                       "1 Day to 3 Weeks",
-                      "Risky Trades With a High Upside\nPotential"),
-                  const SizedBox(height: 20),
-                  pickstabs(
-                      context,
-                      "Long Term Picks",
-                      "assets/images/stopwatch_yellow.png",
-                      "1 Months to 3 Months",
-                      "Money Making Opportunities\nWith Low Risk"),
+                      "Risky Trades With a High Upside\nPotential",
+                      const ShortTermTrades()),
                   const SizedBox(height: 20),
                   pickstabs(
                       context,
                       "Medium Term Picks",
+                      "assets/images/stopwatch_yellow.png",
+                      "1 Months to 3 Months",
+                      "Money Making Opportunities\nWith Low Risk",
+                      const MediumTermTrades()),
+                  const SizedBox(height: 20),
+                  pickstabs(
+                      context,
+                      "Long Term Picks",
                       "assets/images/stopwatch_green.png",
                       "3 Months to 1 Year",
-                      "Safe Trades With a Very Low\nRisk"),
+                      "Safe Trades With a Very Low\nRisk",
+                      const LongTermTrades()),
                   const SizedBox(height: 20),
                   pickstabs(
                       context,
                       "Dividend Stars",
                       "assets/images/MoneyBag.png",
                       "3 Months to 1 Year",
-                      "Safe Companies With a High\nDividend Yield"),
+                      "Safe Companies With a High\nDividend Yield",
+                      const DividendStars()),
                 ]),
               ),
             ]),
@@ -91,9 +100,18 @@ class _PicksScreenState extends State<PicksScreen> {
   }
 }
 
-pickstabs(context, name, logo, duration, description) {
+pickstabs(context, name, logo, duration, description, child) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: child,
+        ),
+      );
+    },
     child: Container(
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(

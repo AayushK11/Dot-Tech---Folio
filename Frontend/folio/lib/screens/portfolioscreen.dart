@@ -422,7 +422,7 @@ portfolioStock(
                       child: Row(
                         children: [
                           Text(
-                            "Price: $lastClose",
+                            "Price: ₹ $lastClose",
                             style: const TextStyle(
                               color: Color(0xffc0c0c0),
                               fontSize: 14,
