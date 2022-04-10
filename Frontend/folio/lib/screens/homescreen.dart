@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/add_stock_screen.dart';
+import 'package:folio/screens/dividendstars.dart';
+import 'package:folio/screens/existing_stock_screen.dart';
+import 'package:folio/screens/longtermtrades.dart';
+import 'package:folio/screens/mediumtermtrades.dart';
+import 'package:folio/screens/shorttermtrades.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,7 +80,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: Alignment.center,
                         icon: Image.asset('assets/images/add_icon.png'),
                         onPressed: () {
-                          // Add Icon
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              duration: const Duration(milliseconds: 500),
+                              type: PageTransitionType.bottomToTop,
+                              child: const AddStock(),
+                            ),
+                          );
                         },
                       ),
                     ]),
@@ -255,12 +269,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               "Short Term Picks",
                               "1 Day to 3 Weeks",
-                              "assets/images/stopwatch_red.png"),
+                              "assets/images/stopwatch_red.png",
+                              const ShortTermTrades()),
                           ourPicks(
                               context,
                               "Medium Term Picks",
                               "1 Months to 3 Months",
-                              "assets/images/stopwatch_yellow.png"),
+                              "assets/images/stopwatch_yellow.png",
+                              const MediumTermTrades()),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -270,13 +286,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ourPicks(
                               context,
                               "Long Term Picks",
-                              "1 Months to 3 Months",
-                              "assets/images/stopwatch_green.png"),
+                              "3 Months to 1 Year",
+                              "assets/images/stopwatch_green.png",
+                              const LongTermTrades()),
                           ourPicks(
                               context,
                               "Dividend Stars",
                               "Slow and Steady Growth",
-                              "assets/images/MoneyBag.png"),
+                              "assets/images/MoneyBag.png",
+                              const DividendStars()),
                         ],
                       ),
                     ],
@@ -298,7 +316,14 @@ portfolioStock(context, name, price, icon) {
       final LocalStorage myStorage = LocalStorage('fintech');
       String _stockCode = name;
       myStorage.setItem("stockCode", _stockCode);
-      // Stock Screen
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: const StockScreen(),
+        ),
+      );
     },
     child: Container(
       margin: const EdgeInsets.fromLTRB(5, 0, 10, 0),
@@ -363,56 +388,68 @@ portfolioStock(context, name, price, icon) {
   );
 }
 
-ourPicks(context, name, description, icon) {
-  return Container(
-    margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
-    width: MediaQuery.of(context).size.width * 0.42,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      color: const Color(0xff212230),
+ourPicks(context, name, description, icon, child) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: child,
+        ),
+      );
+    },
+    child: Container(
+      margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
+      width: MediaQuery.of(context).size.width * 0.42,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: const Color(0xff212230),
+      ),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 16, bottom: 16),
+      child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: Image.asset("$icon"),
+              width: 150,
+              height: 150,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                name,
+                maxLines: 1,
+                style: const TextStyle(
+                  color: Color(0xffc0c0c0),
+                  fontFamily: "Avenir",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                description,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Color(0xffc0c0c0),
+                  fontFamily: "Avenir",
+                  fontSize: 12,
+                  fontWeight: FontWeight.w800,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ),
+          ]),
     ),
-    padding: const EdgeInsets.only(left: 15, right: 15, top: 16, bottom: 16),
-    child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            alignment: Alignment.center,
-            child: Image.asset("$icon"),
-            width: 150,
-            height: 150,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              maxLines: 1,
-              style: const TextStyle(
-                color: Color(0xffc0c0c0),
-                fontFamily: "Avenir",
-                fontSize: 14,
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.none,
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              description,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Color(0xffc0c0c0),
-                fontFamily: "Avenir",
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.none,
-              ),
-            ),
-          ),
-        ]),
   );
 }

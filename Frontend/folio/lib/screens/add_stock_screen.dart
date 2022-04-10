@@ -22,6 +22,37 @@ class _AddStockState extends State<AddStock> {
     super.initState();
   }
 
+  _login() async {
+    await myStorage.ready;
+
+    const baseURL = 'http://7cdb-110-226-206-82.ngrok.io/api';
+    final url = Uri.parse('$baseURL/login/');
+
+    Response response = await post(url, body: {
+      'email': myStorage.getItem('Email').toString(),
+      'password': myStorage.getItem('Password').toString(),
+    });
+
+    final responseJson = jsonDecode(response.body);
+    final responseMessage = responseJson['message'];
+
+    if (responseMessage == "Login Successful") {
+      await myStorage.setItem("FirstName", responseJson['firstname']);
+      await myStorage.setItem("LastName", responseJson['lastname']);
+      await myStorage.setItem("CurrentValue", responseJson['portfoliovalue']);
+      await myStorage.setItem("InvestedValue", responseJson['investedvalue']);
+      await myStorage.setItem("Portfolio", responseJson['portfolio']);
+      await myStorage.setItem("Change", responseJson['change']);
+      await myStorage.setItem("MediumTerm", responseJson['medium']);
+      await myStorage.setItem("LongTerm", responseJson['long']);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Login Failed. Please Check Your Credentials."),
+        backgroundColor: Color(0xFFE43434),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _sendDetails() async {
@@ -29,7 +60,7 @@ class _AddStockState extends State<AddStock> {
 
       _email = myStorage.getItem('Email').toString();
 
-      const baseURL = 'http://166a-110-226-206-82.ngrok.io/api';
+      const baseURL = 'http://7cdb-110-226-206-82.ngrok.io/api';
       final url = Uri.parse('$baseURL/addstock/');
 
       Response response = await post(url, body: {
@@ -43,6 +74,7 @@ class _AddStockState extends State<AddStock> {
       final responseMessage = responseJson['message'];
 
       if (responseMessage == "Added to Portfolio") {
+        _login();
         Navigator.pop(context);
       } else if (responseMessage == "Stock Does Not Exist") {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -69,10 +101,10 @@ class _AddStockState extends State<AddStock> {
         title: const Text(
           'Add Stock',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.white,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              fontFamily: "avenir"),
         ),
       ),
       body: SafeArea(

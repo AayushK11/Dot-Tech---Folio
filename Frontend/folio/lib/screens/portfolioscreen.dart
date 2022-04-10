@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/add_stock_screen.dart';
+import 'package:folio/screens/existing_stock_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({Key? key}) : super(key: key);
@@ -64,9 +67,17 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                       ),
                       IconButton(
                         alignment: Alignment.center,
-                        // width: 225,
                         icon: Image.asset('assets/images/add_icon.png'),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              duration: const Duration(milliseconds: 500),
+                              type: PageTransitionType.bottomToTop,
+                              child: const AddStock(),
+                            ),
+                          );
+                        },
                       ),
                     ]),
               ),
@@ -317,6 +328,14 @@ portfolioStock(
       final LocalStorage myStorage = LocalStorage('fintech');
       String _stockCode = symbol;
       myStorage.setItem("stockCode", _stockCode);
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 500),
+          type: PageTransitionType.bottomToTop,
+          child: const StockScreen(),
+        ),
+      );
     },
     child: Container(
       margin: const EdgeInsets.fromLTRB(5, 10, 10, 5),
@@ -403,7 +422,7 @@ portfolioStock(
                       child: Row(
                         children: [
                           Text(
-                            "Price: $lastClose",
+                            "Price: ₹ $lastClose",
                             style: const TextStyle(
                               color: Color(0xffc0c0c0),
                               fontSize: 14,

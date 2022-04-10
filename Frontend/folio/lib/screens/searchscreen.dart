@@ -21,41 +21,10 @@ class _SearchStockState extends State<SearchStock> {
     super.initState();
   }
 
-  _login() async {
-    await myStorage.ready;
-
-    const baseURL = 'http://166a-110-226-206-82.ngrok.io/api';
-    final url = Uri.parse('$baseURL/login/');
-
-    Response response = await post(url, body: {
-      'email': myStorage.getItem('Email').toString(),
-      'password': myStorage.getItem('Password').toString(),
-    });
-
-    final responseJson = jsonDecode(response.body);
-    final responseMessage = responseJson['message'];
-
-    if (responseMessage == "Login Successful") {
-      await myStorage.setItem("FirstName", responseJson['firstname']);
-      await myStorage.setItem("LastName", responseJson['lastname']);
-      await myStorage.setItem("CurrentValue", responseJson['portfoliovalue']);
-      await myStorage.setItem("InvestedValue", responseJson['investedvalue']);
-      await myStorage.setItem("Portfolio", responseJson['portfolio']);
-      await myStorage.setItem("Change", responseJson['change']);
-      await myStorage.setItem("MediumTerm", responseJson['medium']);
-      await myStorage.setItem("LongTerm", responseJson['long']);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Login Failed. Please Check Your Credentials."),
-        backgroundColor: Color(0xFFE43434),
-      ));
-    }
-  }
-
   _sendDetails() async {
     await myStorage.ready;
 
-    const baseURL = 'http://166a-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://7cdb-110-226-206-82.ngrok.io/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {
@@ -82,7 +51,7 @@ class _SearchStockState extends State<SearchStock> {
           type: PageTransitionType.bottomToTop,
           child: const NewStockScreen(),
         ),
-      ).then((value) => _login());
+      );
     } else if (responseMessage == "Stock Does Not Exist") {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Stock Not Found."),
@@ -198,7 +167,7 @@ class _SearchStockState extends State<SearchStock> {
               ),
               const SizedBox(height: 150),
               const Text(
-                'Search Something You Want\nSearch Something You Need\nSearch With Folio\nEarn When You Sleep',
+                'Search What You Want\nSearch What You Need\nSearch With Folio\nEarn When You Sleep',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xffffffff),
