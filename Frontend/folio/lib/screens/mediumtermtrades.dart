@@ -161,58 +161,75 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
         ),
       ),
       body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Container(
-        color: const Color(0xff151321),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(
-              top: 23,
-              left: 15,
-              right: 15,
-              bottom: 10,
-            ),
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(16),
+            color: const Color(0xff151321),
             child: Column(children: [
-              stocktabs(
-                  context,
-                  "HDFC Bank Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/hdfc-bank--big.svg",
-                  "1514.65",
-                  "HDFCBANK"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "HDFC Bank Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/hdfc-bank--big.svg",
-                  "1514.65",
-                  "HDFCBANK"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "HDFC Bank Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/hdfc-bank--big.svg",
-                  "1514.65",
-                  "HDFCBANK"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "HDFC Bank Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/hdfc-bank--big.svg",
-                  "1514.65",
-                  "HDFCBANK"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "HDFC Bank Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/hdfc-bank--big.svg",
-                  "1514.65",
-                  "HDFCBANK"),
-              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 0,
+                  left: 15,
+                  right: 15,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(16),
+                child: Column(children: [
+                  stocktabs(
+                      context,
+                      "Bajaj Finserv Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/bajaj-finserv--big.svg",
+                      "16749.00",
+                      "BAJAJFINSV"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Shree Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/shree-cement--big.svg",
+                      "25260.65",
+                      "SHREECEM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "UltraTech Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/ultratech-cement--big.svg",
+                      "6837.00",
+                      "ULTRACEMCO"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tech Mahindra Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/mahindra-tech--big.svg",
+                      "1448.75",
+                      "TECHM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tata Steel Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/tata--big.svg",
+                      "1370.75",
+                      "TATASTEEL"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Hindustan Unilever Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/unilever--big.svg",
+                      "2183.05",
+                      "HINDUNILVR"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Dr. Reddy's Laboratories Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/dr-reddys--big.svg",
+                      "4430.35",
+                      "DRREDDY"),
+                ]),
+              ),
             ]),
           ),
-        ]),
-      )),
+        ),
+      ),
     );
   }
 }

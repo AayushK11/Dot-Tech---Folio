@@ -161,58 +161,75 @@ class _LongTermTradesState extends State<LongTermTrades> {
         ),
       ),
       body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Container(
-        color: const Color(0xff151321),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(
-              top: 23,
-              left: 15,
-              right: 15,
-              bottom: 10,
-            ),
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(16),
+            color: const Color(0xff151321),
             child: Column(children: [
-              stocktabs(
-                  context,
-                  "Tata Motors Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                  "452.05",
-                  "TATAMOTORS"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Tata Motors Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                  "452.05",
-                  "TATAMOTORS"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Tata Motors Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                  "452.05",
-                  "TATAMOTORS"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Tata Motors Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                  "452.05",
-                  "TATAMOTORS"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Tata Motors Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                  "452.05",
-                  "TATAMOTORS"),
-              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 0,
+                  left: 15,
+                  right: 15,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(16),
+                child: Column(children: [
+                  stocktabs(
+                      context,
+                      "Nestle India Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/nestle--big.svg",
+                      "18452.8",
+                      "NESTLEIND"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Divi's Laboratories Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/divis--big.svg",
+                      "4505.95",
+                      "DIVISLAB"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Shree Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/shree-cement--big.svg",
+                      "25484.55",
+                      "SHREECEM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tata Consultancy Services Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/tata--big.svg",
+                      "3685.65",
+                      "TCS"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Britannia Industries Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
+                      "3347.9",
+                      "BRITANNIA"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Titan Company Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/titan-company--big.svg",
+                      "2509.95",
+                      "TITAN"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Hero MotoCorp Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/hero-motocorp--big.svg",
+                      "2362.45",
+                      "HEROMOTOCO"),
+                ]),
+              ),
             ]),
           ),
-        ]),
-      )),
+        ),
+      ),
     );
   }
 }

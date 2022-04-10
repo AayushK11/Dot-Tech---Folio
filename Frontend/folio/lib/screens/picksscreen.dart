@@ -24,77 +24,80 @@ class _PicksScreenState extends State<PicksScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        color: const Color(0xff151321),
-        child: Column(children: [
-          Container(
-            color: const Color(0xff151321),
-            child: Column(children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(
-                  top: 25,
-                  left: 25,
-                  right: 15,
-                  bottom: 5,
-                ),
-                child: const Text(
-                  'Top Picks',
-                  style: TextStyle(
-                    color: Color(0xffffffff),
-                    fontFamily: "Avenir",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    decoration: TextDecoration.none,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          color: const Color(0xff151321),
+          child: Column(children: [
+            Container(
+              color: const Color(0xff151321),
+              child: Column(children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.only(
+                    top: 25,
+                    left: 25,
+                    right: 15,
+                    bottom: 5,
+                  ),
+                  child: const Text(
+                    'Top Picks',
+                    style: TextStyle(
+                      color: Color(0xffffffff),
+                      fontFamily: "Avenir",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                      decoration: TextDecoration.none,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 23,
-                  left: 15,
-                  right: 15,
-                  bottom: 10,
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 23,
+                    left: 15,
+                    right: 15,
+                    bottom: 10,
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(16),
+                  child: Column(children: [
+                    pickstabs(
+                        context,
+                        "Short Term Picks",
+                        "assets/images/stopwatch_red.png",
+                        "1 Day to 3 Weeks",
+                        "Risky Trades With a High Upside\nPotential",
+                        const ShortTermTrades()),
+                    const SizedBox(height: 20),
+                    pickstabs(
+                        context,
+                        "Medium Term Picks",
+                        "assets/images/stopwatch_yellow.png",
+                        "1 Months to 3 Months",
+                        "Money Making Opportunities\nWith Low Risk",
+                        const MediumTermTrades()),
+                    const SizedBox(height: 20),
+                    pickstabs(
+                        context,
+                        "Long Term Picks",
+                        "assets/images/stopwatch_green.png",
+                        "3 Months to 1 Year",
+                        "Safe Trades With a Very Low\nRisk",
+                        const LongTermTrades()),
+                    const SizedBox(height: 20),
+                    pickstabs(
+                        context,
+                        "Dividend Stars",
+                        "assets/images/MoneyBag.png",
+                        "3 Months to 1 Year",
+                        "Safe Companies With a High\nDividend Yield",
+                        const DividendStars()),
+                  ]),
                 ),
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.all(16),
-                child: Column(children: [
-                  pickstabs(
-                      context,
-                      "Short Term Picks",
-                      "assets/images/stopwatch_red.png",
-                      "1 Day to 3 Weeks",
-                      "Risky Trades With a High Upside\nPotential",
-                      const ShortTermTrades()),
-                  const SizedBox(height: 20),
-                  pickstabs(
-                      context,
-                      "Medium Term Picks",
-                      "assets/images/stopwatch_yellow.png",
-                      "1 Months to 3 Months",
-                      "Money Making Opportunities\nWith Low Risk",
-                      const MediumTermTrades()),
-                  const SizedBox(height: 20),
-                  pickstabs(
-                      context,
-                      "Long Term Picks",
-                      "assets/images/stopwatch_green.png",
-                      "3 Months to 1 Year",
-                      "Safe Trades With a Very Low\nRisk",
-                      const LongTermTrades()),
-                  const SizedBox(height: 20),
-                  pickstabs(
-                      context,
-                      "Dividend Stars",
-                      "assets/images/MoneyBag.png",
-                      "3 Months to 1 Year",
-                      "Safe Companies With a High\nDividend Yield",
-                      const DividendStars()),
-                ]),
-              ),
-            ]),
-          )
-        ]),
+              ]),
+            )
+          ]),
+        ),
       ),
     );
   }

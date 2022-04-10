@@ -161,58 +161,75 @@ class _DividendStarsState extends State<DividendStars> {
         ),
       ),
       body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Container(
-        color: const Color(0xff151321),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(
-              top: 23,
-              left: 15,
-              right: 15,
-              bottom: 10,
-            ),
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(16),
+            color: const Color(0xff151321),
             child: Column(children: [
-              stocktabs(
-                  context,
-                  "ITC Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                  "267.08",
-                  "ITC"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "ITC Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                  "267.08",
-                  "ITC"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "ITC Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                  "267.08",
-                  "ITC"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "ITC Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                  "267.08",
-                  "ITC"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "ITC Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                  "267.08",
-                  "ITC"),
-              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 0,
+                  left: 15,
+                  right: 15,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(16),
+                child: Column(children: [
+                  stocktabs(
+                      context,
+                      "Hindustan Unilever Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/unilever--big.svg",
+                      "2183.05",
+                      "HINDUNILVR"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Britannia Industries Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
+                      "3347.9",
+                      "BRITANNIA"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "HCL Technologies Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/hcl-technologies--big.svg",
+                      "1165.35",
+                      "HCLTECH"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "ITC Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/itc--big.svg",
+                      "267.08",
+                      "ITC"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Infosys Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/infosys--big.svg",
+                      "1814.6",
+                      "INFY"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Coal India Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/coal-india--big.svg",
+                      "194.55",
+                      "COALINDIA"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Bharat Petroleum Corporation Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/bharat-petroleum--big.svg",
+                      "384.55",
+                      "BPCL"),
+                ]),
+              ),
             ]),
           ),
-        ]),
-      )),
+        ),
+      ),
     );
   }
 }

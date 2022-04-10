@@ -161,58 +161,75 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
         ),
       ),
       body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Container(
-        color: const Color(0xff151321),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(
-              top: 23,
-              left: 15,
-              right: 15,
-              bottom: 10,
-            ),
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(16),
+            color: const Color(0xff151321),
             child: Column(children: [
-              stocktabs(
-                  context,
-                  "Bharti Airtel Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/airtel--big.svg",
-                  "762.1",
-                  "BHARTIARTL"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Bharti Airtel Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/airtel--big.svg",
-                  "762.1",
-                  "BHARTIARTL"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Bharti Airtel Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/airtel--big.svg",
-                  "762.1",
-                  "BHARTIARTL"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Bharti Airtel Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/airtel--big.svg",
-                  "762.1",
-                  "BHARTIARTL"),
-              const SizedBox(height: 20),
-              stocktabs(
-                  context,
-                  "Bharti Airtel Ltd.",
-                  "https://s3-symbol-logo.tradingview.com/airtel--big.svg",
-                  "762.1",
-                  "BHARTIARTL"),
-              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 0,
+                  left: 15,
+                  right: 15,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(16),
+                child: Column(children: [
+                  stocktabs(
+                      context,
+                      "Bajaj Finserv Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/bajaj-finserv--big.svg",
+                      "16749.00",
+                      "BAJAJFINSV"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Maruti Suzuki India Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/maruti-suzuki-india--big.svg",
+                      "7557.95",
+                      "MARUTI"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "UltraTech Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/ultratech-cement--big.svg",
+                      "6837.00",
+                      "ULTRACEMCO"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tech Mahindra Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/mahindra-tech--big.svg",
+                      "1448.75",
+                      "TECHM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Infosys Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/infosys--big.svg",
+                      "1814.6",
+                      "INFY"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tata Consultancy Services Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/tata--big.svg",
+                      "3685.65",
+                      "TCS"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Britannia Industries Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
+                      "3482.64",
+                      "BRITANNIA"),
+                ]),
+              ),
             ]),
           ),
-        ]),
-      )),
+        ),
+      ),
     );
   }
 }
