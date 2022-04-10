@@ -280,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ourPicks(
                               context,
                               "Long Term Picks",
-                              "1 Months to 3 Months",
+                              "3 Months to 1 Year",
                               "assets/images/stopwatch_green.png"),
                           ourPicks(
                               context,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:folio/screens/picksscreen.dart';
 import 'package:folio/screens/portfolioscreen.dart';
 import 'package:folio/screens/searchscreen.dart';
 import 'homescreen.dart';
@@ -16,7 +17,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _children = [
     const HomeScreen(),
     const PortfolioScreen(),
-    const SearchStock()
+    const SearchStock(),
+    const PicksScreen()
   ];
 
   void onTabTapped(int index) {
