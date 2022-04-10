@@ -33,7 +33,6 @@ def login(request):
         if user.password == request.data["password"]:
 
             portfolio = user.portfolio.split(";")
-            portfolio.remove("")
 
             arr_main = []
             dict_main = {}
